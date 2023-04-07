@@ -23,6 +23,7 @@ class Form extends React.Component {
             data-testid="name-input"
             type="text"
             id="nome"
+            name="cardName"
             value={ cardName }
             onChange={ onInputChange }
           />
@@ -33,6 +34,7 @@ class Form extends React.Component {
           <textarea
             data-testid="description-input"
             id="descricao"
+            name="cardDescription"
             value={ cardDescription }
             onChange={ onInputChange }
           />
@@ -44,6 +46,7 @@ class Form extends React.Component {
             data-testid="attr1-input"
             type="number"
             id="attr1"
+            name="cardAttr1"
             value={ cardAttr1 }
             onChange={ onInputChange }
           />
@@ -55,6 +58,7 @@ class Form extends React.Component {
             data-testid="attr2-input"
             type="number"
             id="attr2"
+            name="cardAttr2"
             value={ cardAttr2 }
             onChange={ onInputChange }
           />
@@ -66,6 +70,7 @@ class Form extends React.Component {
             data-testid="attr3-input"
             type="number"
             id="attr3"
+            name="cardAttr3"
             value={ cardAttr3 }
             onChange={ onInputChange }
           />
@@ -76,6 +81,7 @@ class Form extends React.Component {
             data-testid="image-input"
             type="text"
             id="img"
+            name="cardImag"
             value={ cardImage }
             onChange={ onInputChange }
           />
@@ -83,7 +89,12 @@ class Form extends React.Component {
 
         <label htmlFor="raridade">
           Raridade
-          <select data-testid="rare-input" value={ cardRare } onChange={ onInputChange }>
+          <select
+            data-testid="rare-input"
+            name="cardRare"
+            value={ cardRare }
+            onChange={ onInputChange }
+          >
             <option>normal</option>
             <option>raro</option>
             <option>muito raro</option>
@@ -96,6 +107,7 @@ class Form extends React.Component {
             data-testid="trunfo-input"
             type="checkbox"
             id="super-trunfo"
+            name="cardTrunfo"
             checked={ cardTrunfo }
             onChange={ onInputChange }
           />
