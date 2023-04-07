@@ -4,14 +4,14 @@ import Card from './components/Card';
 
 class App extends React.Component {
   state = {
-    cardName: '',
-    cardDescription: '',
-    cardAttr1: '',
-    cardAttr2: '',
-    cardAttr3: '',
-    cardImage: '',
-    cardRare: '',
-    cardTrunfo: '',
+    name: '',
+    description: '',
+    atributo1: '',
+    atributo2: '',
+    atributo3: '',
+    image: '',
+    rare: '',
+    trunfo: '',
   };
 
   onInputChange = (event) => {
@@ -24,31 +24,30 @@ class App extends React.Component {
   };
 
   render() {
-    const { cardName,
-      cardDescription,
-      cardAttr1, cardAttr2, cardAttr3, cardImage, cardRare, cardTrunfo } = this.state;
+    const { name,
+      description, atributo1, atributo2, atributo3, image, rare, trunfo } = this.state;
     return (
       <>
         <Form
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
+          cardName={ name }
+          cardDescription={ description }
+          cardAttr1={ atributo1 }
+          cardAttr2={ atributo2 }
+          cardAttr3={ atributo3 }
+          cardImage={ image }
+          cardRare={ rare }
+          cardTrunfo={ trunfo }
           onInputChange={ this.onInputChange }
         />
         <Card
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
+          cardName={ name }
+          cardDescription={ description }
+          cardAttr1={ atributo1 }
+          cardAttr2={ atributo2 }
+          cardAttr3={ atributo3 }
+          cardImage={ image }
+          cardRare={ rare }
+          cardTrunfo={ trunfo }
         />
       </>
     );
