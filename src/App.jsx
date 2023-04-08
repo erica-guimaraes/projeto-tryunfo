@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import './App.css';
 
 class App extends React.Component {
   state = {
@@ -12,6 +13,29 @@ class App extends React.Component {
     image: '',
     rare: '',
     trunfo: '',
+    isSaveButtonDisabled: true,
+  };
+
+  validationBtn = () => {
+    const { name,
+      description, image, rare, atributo1, atributo2, atributo3 } = this.state;
+
+    const somaTotal = 210;
+    const pts = 90;
+
+    const valInputs = (name.length > 0
+      && description.length > 0 && image.length > 0 && rare.length > 0);
+
+    const valSomaAtrib = (Number(atributo1)
+    + Number(atributo2) + Number(atributo3)) <= somaTotal;
+
+    const valPontos = Number(atributo1) <= pts && Number(atributo1) >= 0
+    && Number(atributo2) <= pts && Number(atributo2) >= 0
+    && Number(atributo3) <= pts && Number(atributo3) >= 0;
+
+    this.setState({
+      isSaveButtonDisabled: !(valInputs && valSomaAtrib && valPontos),
+    });
   };
 
   onInputChange = (event) => {
@@ -20,12 +44,14 @@ class App extends React.Component {
 
     this.setState({
       [name]: value,
-    });
+    }, this.validationBtn);
   };
 
   render() {
     const { name,
-      description, atributo1, atributo2, atributo3, image, rare, trunfo } = this.state;
+      description,
+      atributo1,
+      atributo2, atributo3, image, rare, trunfo, isSaveButtonDisabled } = this.state;
     return (
       <>
         <Form
@@ -38,6 +64,7 @@ class App extends React.Component {
           cardRare={ rare }
           cardTrunfo={ trunfo }
           onInputChange={ this.onInputChange }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
         />
         <Card
           cardName={ name }
