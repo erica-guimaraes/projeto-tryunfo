@@ -47,6 +47,18 @@ class App extends React.Component {
     }, this.validationBtn);
   };
 
+  onSaveButtonClick = () => {
+    this.setState({
+      name: '',
+      description: '',
+      atributo1: '0',
+      atributo2: '0',
+      atributo3: '0',
+      image: '',
+      rare: 'normal',
+    });
+  };
+
   render() {
     const { name,
       description,
@@ -65,6 +77,7 @@ class App extends React.Component {
           cardTrunfo={ trunfo }
           onInputChange={ this.onInputChange }
           isSaveButtonDisabled={ isSaveButtonDisabled }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card
           cardName={ name }
