@@ -14,6 +14,8 @@ class App extends React.Component {
     rare: '',
     trunfo: '',
     isSaveButtonDisabled: true,
+    hasTrunfo: false,
+    cards: [],
   };
 
   validationBtn = () => {
@@ -48,7 +50,22 @@ class App extends React.Component {
   };
 
   onSaveButtonClick = () => {
-    this.setState({
+    const { name,
+      description,
+      atributo1,
+      atributo2, atributo3, image, rare, trunfo, hasTrunfo } = this.state;
+
+    this.setState((prev) => ({
+      cards: [...prev.cards, {
+        name,
+        description,
+        atributo1,
+        atributo2,
+        atributo3,
+        image,
+        rare,
+        trunfo,
+      }],
       name: '',
       description: '',
       atributo1: '0',
@@ -56,14 +73,17 @@ class App extends React.Component {
       atributo3: '0',
       image: '',
       rare: 'normal',
-    });
+      hasTrunfo: trunfo ? true : hasTrunfo,
+    }));
   };
 
   render() {
     const { name,
       description,
       atributo1,
-      atributo2, atributo3, image, rare, trunfo, isSaveButtonDisabled } = this.state;
+      atributo2,
+      atributo3,
+      image, rare, trunfo, isSaveButtonDisabled, hasTrunfo } = this.state;
     return (
       <>
         <Form
@@ -78,6 +98,7 @@ class App extends React.Component {
           onInputChange={ this.onInputChange }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ this.onSaveButtonClick }
+          hasTrunfo={ hasTrunfo }
         />
         <Card
           cardName={ name }
@@ -89,6 +110,7 @@ class App extends React.Component {
           cardRare={ rare }
           cardTrunfo={ trunfo }
         />
+
       </>
     );
   }
