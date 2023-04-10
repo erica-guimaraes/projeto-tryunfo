@@ -17,6 +17,7 @@ class Form extends React.Component {
       onSaveButtonClick } = this.props;
     return (
       <form>
+        <h1>ADICIONE NOVA CARTA</h1>
         <label htmlFor="nome">
           Nome
           <input
@@ -36,6 +37,17 @@ class Form extends React.Component {
             id="descricao"
             name="description"
             value={ cardDescription }
+            onChange={ onInputChange }
+          />
+        </label>
+
+        <label htmlFor="img">
+          <input
+            data-testid="image-input"
+            type="text"
+            id="img"
+            name="image"
+            value={ cardImage }
             onChange={ onInputChange }
           />
         </label>
@@ -72,17 +84,6 @@ class Form extends React.Component {
             id="attr3"
             name="atributo3"
             value={ cardAttr3 }
-            onChange={ onInputChange }
-          />
-        </label>
-
-        <label htmlFor="img">
-          <input
-            data-testid="image-input"
-            type="text"
-            id="img"
-            name="image"
-            value={ cardImage }
             onChange={ onInputChange }
           />
         </label>

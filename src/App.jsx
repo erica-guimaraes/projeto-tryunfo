@@ -2,6 +2,9 @@ import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
 import './App.css';
+import imagem from './imagens/La_casa_de_papel.png';
+import personagens from './imagens/personagens.jpg';
+import superTrunfo from './imagens/Super_trunfo.png';
 
 class App extends React.Component {
   state = {
@@ -86,30 +89,40 @@ class App extends React.Component {
       image, rare, trunfo, isSaveButtonDisabled, hasTrunfo } = this.state;
     return (
       <>
-        <Form
-          cardName={ name }
-          cardDescription={ description }
-          cardAttr1={ atributo1 }
-          cardAttr2={ atributo2 }
-          cardAttr3={ atributo3 }
-          cardImage={ image }
-          cardRare={ rare }
-          cardTrunfo={ trunfo }
-          onInputChange={ this.onInputChange }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onSaveButtonClick={ this.onSaveButtonClick }
-          hasTrunfo={ hasTrunfo }
-        />
-        <Card
-          cardName={ name }
-          cardDescription={ description }
-          cardAttr1={ atributo1 }
-          cardAttr2={ atributo2 }
-          cardAttr3={ atributo3 }
-          cardImage={ image }
-          cardRare={ rare }
-          cardTrunfo={ trunfo }
-        />
+        <img src={ superTrunfo } alt="Super Trunfo" className="super-trunfo" />
+        <img src={ imagem } alt="La casa de Papel" className="titulo" />
+        <img src={ personagens } alt="Personagens" className="personagens" />
+        <div className="app">
+          <Form
+            cardName={ name }
+            cardDescription={ description }
+            cardImage={ image }
+            cardAttr1={ atributo1 }
+            cardAttr2={ atributo2 }
+            cardAttr3={ atributo3 }
+            cardRare={ rare }
+            cardTrunfo={ trunfo }
+            onInputChange={ this.onInputChange }
+            isSaveButtonDisabled={ isSaveButtonDisabled }
+            onSaveButtonClick={ this.onSaveButtonClick }
+            hasTrunfo={ hasTrunfo }
+          />
+          <div className="preview">
+            <h1>PRÉ-VISUALIZAÇÃO</h1>
+            <Card
+              cardName={ name }
+              cardDescription={ description }
+              cardAttr1={ atributo1 }
+              cardAttr2={ atributo2 }
+              cardAttr3={ atributo3 }
+              cardImage={ image }
+              cardRare={ rare }
+              cardTrunfo={ trunfo }
+            />
+          </div>
+        </div>
+
+        <h1>TODAS AS CARTAS</h1>
 
       </>
     );
