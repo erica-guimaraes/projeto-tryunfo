@@ -31,7 +31,7 @@ h1 {
   justify-content: center;
 }
 
-form {
+.form {
   background-color: #440303;
   border-radius: 10px;
   box-shadow: 5px 5px 10px black;
@@ -52,6 +52,34 @@ form {
   margin: 50px auto;
   padding: 20px;
   width: 40%;
+}
+
+.baralho {
+  background-color: #440303;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  margin: 50px auto;
+  padding: 20px;
+  width: 90%;
+}
+
+.card {
+  background-color: #151111;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  margin: 50px auto;
+  padding: 20px;
+  width: 500px;
+}
+
+.image-card {
+  width: 400px;
 }
 
 button {

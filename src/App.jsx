@@ -56,19 +56,24 @@ class App extends React.Component {
     const { name,
       description,
       atributo1,
-      atributo2, atributo3, image, rare, trunfo, hasTrunfo } = this.state;
+      atributo2, atributo3, image, rare, trunfo, hasTrunfo, cards } = this.state;
 
-    this.setState((prev) => ({
-      cards: [...prev.cards, {
-        name,
-        description,
-        atributo1,
-        atributo2,
-        atributo3,
-        image,
-        rare,
-        trunfo,
-      }],
+    const card = {
+      name,
+      description,
+      atributo1,
+      atributo2,
+      atributo3,
+      image,
+      rare,
+      trunfo,
+    };
+
+    this.setState({
+      cards: [...cards, card],
+    });
+
+    this.setState({
       name: '',
       description: '',
       atributo1: '0',
@@ -77,7 +82,7 @@ class App extends React.Component {
       image: '',
       rare: 'normal',
       hasTrunfo: trunfo ? true : hasTrunfo,
-    }));
+    }, this.validationBtn);
   };
 
   render() {
@@ -86,44 +91,65 @@ class App extends React.Component {
       atributo1,
       atributo2,
       atributo3,
-      image, rare, trunfo, isSaveButtonDisabled, hasTrunfo } = this.state;
+      image, rare, trunfo, isSaveButtonDisabled, hasTrunfo, cards } = this.state;
     return (
       <>
         <img src={ superTrunfo } alt="Super Trunfo" className="super-trunfo" />
         <img src={ imagem } alt="La casa de Papel" className="titulo" />
         <img src={ personagens } alt="Personagens" className="personagens" />
-        <div className="app">
-          <Form
-            cardName={ name }
-            cardDescription={ description }
-            cardImage={ image }
-            cardAttr1={ atributo1 }
-            cardAttr2={ atributo2 }
-            cardAttr3={ atributo3 }
-            cardRare={ rare }
-            cardTrunfo={ trunfo }
-            onInputChange={ this.onInputChange }
-            isSaveButtonDisabled={ isSaveButtonDisabled }
-            onSaveButtonClick={ this.onSaveButtonClick }
-            hasTrunfo={ hasTrunfo }
-          />
-          <div className="preview">
-            <h1>PRÉ-VISUALIZAÇÃO</h1>
-            <Card
+        <section className="app">
+          <div className="form">
+            <Form
               cardName={ name }
               cardDescription={ description }
+              cardImage={ image }
               cardAttr1={ atributo1 }
               cardAttr2={ atributo2 }
               cardAttr3={ atributo3 }
-              cardImage={ image }
               cardRare={ rare }
               cardTrunfo={ trunfo }
+              onInputChange={ this.onInputChange }
+              isSaveButtonDisabled={ isSaveButtonDisabled }
+              onSaveButtonClick={ this.onSaveButtonClick }
+              hasTrunfo={ hasTrunfo }
             />
           </div>
-        </div>
 
-        <h1>TODAS AS CARTAS</h1>
+          <div className="preview">
+            <h1>PRÉ-VISUALIZAÇÃO</h1>
+            <div className="card">
+              <Card
+                cardName={ name }
+                cardDescription={ description }
+                cardAttr1={ atributo1 }
+                cardAttr2={ atributo2 }
+                cardAttr3={ atributo3 }
+                cardImage={ image }
+                cardRare={ rare }
+                cardTrunfo={ trunfo }
+              />
+            </div>
+          </div>
+        </section>
 
+        <section className="baralho">
+          <h1>TODAS AS CARTAS</h1>
+          <div className="card">
+            { cards.map((card) => (
+              <Card
+                key={ card.name }
+                cardName={ card.name }
+                cardDescription={ card.description }
+                cardAttr1={ card.atributo1 }
+                cardAttr2={ card.atributo2 }
+                cardAttr3={ card.atributo3 }
+                cardImage={ card.image }
+                cardRare={ card.rare }
+                cardTrunfo={ card.trunfo }
+              />
+            ))}
+          </div>
+        </section>
       </>
     );
   }
