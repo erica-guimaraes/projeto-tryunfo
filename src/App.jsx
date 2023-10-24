@@ -3,8 +3,7 @@ import Form from './components/Form';
 import Card from './components/Card';
 import './App.css';
 import imagem from './imagens/La_casa_de_papel.png';
-import personagens from './imagens/personagens.jpg';
-import superTrunfo from './imagens/Super_trunfo.png';
+// import personagens from './imagens/personagens.jpeg';
 
 class App extends React.Component {
   state = {
